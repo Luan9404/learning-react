@@ -41,7 +41,8 @@ export class Home extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({searchValue: e.target.value})   
+    const {value} = e.target
+    this.setState({...this.state, searchValue: value})   
   }
 
   render() {
@@ -54,6 +55,7 @@ export class Home extends Component {
     } = this.state;
 
     const noMorePosts = page + postsPerPage >= allPosts.length;
+
     const filteredPosts = !!searchValue ? 
     allPosts.filter(post =>{
       return post.title.toLowerCase()
